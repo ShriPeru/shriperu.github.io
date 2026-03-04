@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YOUR NAME — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0b;
+      --bg2: #111110;
+      --gold: #c9a84c;
+      --gold-dim: #a07830;
+      --text: #c8c4b8;
+      --text-dim: #6b6760;
+      --text-bright: #e8e4da;
+      --border: #222220;
+      --mono: 'Space Mono', monospace;
+      --serif: 'EB Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: #0a0a09;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+    }
+    .ticker-inner span.highlight { color: var(--gold); }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 60px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(13,13,11,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .nav-logo-text {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--text-bright);
+    }
+    .nav-logo-sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      margin-left: 4px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-bright); }
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+    /* HERO */
+    .hero {
+      padding: 120px 60px 100px;
+      max-width: 900px;
+    }
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--text-bright);
+      margin-bottom: 32px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-bio {
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.8;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+    .hero-actions {
+      margin-top: 48px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 14px 30px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text-bright); }
+    .btn-ghost::after { content: '→'; }
+
+    /* DIVIDER */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 60px;
+    }
+
+    /* ABOUT SECTION */
+    .section {
+      padding: 100px 60px;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 80px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-grid h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-bright);
+    }
+    .about-grid h2 em { font-style: italic; color: var(--gold); }
+    .about-text {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.9;
+    }
+    .about-text p + p { margin-top: 20px; }
+
+    /* WORK / PROJECTS */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .work-card {
+      background: var(--bg2);
+      padding: 48px;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .work-card:hover { background: #161614; }
+    .work-card-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .work-card h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-bright);
+      margin-bottom: 14px;
+    }
+    .work-card p {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+    .work-card-tags {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid #2a2820;
+      padding: 4px 10px;
+    }
+    .work-card-arrow {
+      margin-top: 32px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      display: flex; align-items: center; gap: 8px;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .work-card:hover .work-card-arrow { color: var(--gold); gap: 14px; }
+
+    /* SKILLS / BACKGROUND */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .skill-block {}
+    .skill-block-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .skill-list li {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .skill-list li::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold-dim);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .contact-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 400;
+      color: var(--text-bright);
+      line-height: 1.15;
+    }
+    .contact-section h2 em { font-style: italic; color: var(--gold); }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link:hover { border-color: var(--gold-dim); background: #111110; }
+    .contact-link-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .contact-link-value {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--text-bright);
+    }
+    .contact-link-arrow {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 30px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    /* FADE IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.3s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero, .section, .contact-section { padding: 60px 24px; }
+      .section-divider { margin: 0 24px; }
+      .about-grid, .work-grid, .skills-grid, .contact-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="highlight">AVAILABLE FOR WORK</span> &nbsp;·&nbsp; Based in [Your City] &nbsp;·&nbsp; Open to full-time & freelance &nbsp;·&nbsp; [Your Field] &nbsp;·&nbsp;
+      <span class="highlight">AVAILABLE FOR WORK</span> &nbsp;·&nbsp; Based in [Your City] &nbsp;·&nbsp; Open to full-time & freelance &nbsp;·&nbsp; [Your Field] &nbsp;·&nbsp;
+      <span class="highlight">AVAILABLE FOR WORK</span> &nbsp;·&nbsp; Based in [Your City] &nbsp;·&nbsp; Open to full-time & freelance &nbsp;·&nbsp; [Your Field] &nbsp;·&nbsp;
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+      </div>
+      <div>
+        <div class="nav-logo-text">YOUR NAME</div>
+        <div class="nav-logo-sub">PORTFOLIO</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work" class="active">Work</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get In Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label fade-in">Introduction</div>
+    <h1 class="fade-in">Building things <em>that actually matter.</em></h1>
+    <p class="hero-bio fade-in">
+      I'm a [Your Role] with a focus on [Your Specialty]. I work at the intersection of [Area 1] and [Area 2] — crafting work that is precise, purposeful, and built to last.
+    </p>
+    <div class="hero-actions fade-in">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <span class="section-label">About</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <h2>A background built on <em>curiosity</em> and craft.</h2>
+      <div class="about-text">
+        <p>Replace this with a few sentences about who you are. Where you came from, what drives your work, what you believe about your craft.</p>
+        <p>A second paragraph works well here — something more personal, or about your current focus and what you're building toward.</p>
+        <p>Keep it honest, specific, and human. Readers can tell when it's generic.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="section-header">
+      <span class="section-label">Selected Work</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-card-num">01</div>
+        <h3>Project Title One</h3>
+        <p>A short description of what this project is, what problem it solved, and your role in it. Keep it focused and outcome-oriented.</p>
+        <div class="work-card-tags">
+          <span class="tag">Tag One</span>
+          <span class="tag">Tag Two</span>
+          <span class="tag">Tag Three</span>
+        </div>
+        <div class="work-card-arrow">View Project →</div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-num">02</div>
+        <h3>Project Title Two</h3>
+        <p>A short description of what this project is, what problem it solved, and your role in it. Keep it focused and outcome-oriented.</p>
+        <div class="work-card-tags">
+          <span class="tag">Tag One</span>
+          <span class="tag">Tag Two</span>
+        </div>
+        <div class="work-card-arrow">View Project →</div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-num">03</div>
+        <h3>Project Title Three</h3>
+        <p>A short description of what this project is, what problem it solved, and your role in it. Keep it focused and outcome-oriented.</p>
+        <div class="work-card-tags">
+          <span class="tag">Tag One</span>
+          <span class="tag">Tag Two</span>
+          <span class="tag">Tag Three</span>
+        </div>
+        <div class="work-card-arrow">View Project →</div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-num">04</div>
+        <h3>Project Title Four</h3>
+        <p>A short description of what this project is, what problem it solved, and your role in it. Keep it focused and outcome-oriented.</p>
+        <div class="work-card-tags">
+          <span class="tag">Tag One</span>
+          <span class="tag">Tag Two</span>
+        </div>
+        <div class="work-card-arrow">View Project →</div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- BACKGROUND / SKILLS -->
+  <section class="section" id="background">
+    <div class="section-header">
+      <span class="section-label">Background</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <div class="skill-block-title">Experience</div>
+        <ul class="skill-list">
+          <li>Company Name — Role (Year–Year)</li>
+          <li>Company Name — Role (Year–Year)</li>
+          <li>Company Name — Role (Year–Year)</li>
+          <li>Company Name — Role (Year–Year)</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Education</div>
+        <ul class="skill-list">
+          <li>University Name — Degree (Year)</li>
+          <li>Relevant Certification (Year)</li>
+          <li>Relevant Course or Award</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Skills & Tools</div>
+        <ul class="skill-list">
+          <li>Skill or Tool One</li>
+          <li>Skill or Tool Two</li>
+          <li>Skill or Tool Three</li>
+          <li>Skill or Tool Four</li>
+          <li>Skill or Tool Five</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <h2>Let's build something <em>worth building.</em></h2>
+    <div class="contact-links">
+      <a href="mailto:you@email.com" class="contact-link">
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">you@email.com</div>
+        </div>
+        <div class="contact-link-arrow">↗</div>
+      </a>
+      <a href="https://linkedin.com/in/yourhandle" target="_blank" class="contact-link">
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">linkedin.com/in/yourhandle</div>
+        </div>
+        <div class="contact-link-arrow">↗</div>
+      </a>
+      <a href="https://github.com/yourhandle" target="_blank" class="contact-link">
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-value">github.com/yourhandle</div>
+        </div>
+        <div class="contact-link-arrow">↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Your Name. All rights reserved.</p>
+    <p>Designed & built with intention.</p>
+  </footer>
+
+</body>
+</html>
