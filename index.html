@@ -124,7 +124,30 @@
     /* HERO */
     .hero {
       padding: 120px 60px 100px;
-      max-width: 900px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid var(--gold-dim);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(15%);
     }
     .hero-label {
       font-family: var(--mono);
@@ -419,9 +442,9 @@
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
-      .hero, .section, .contact-section { padding: 60px 24px; }
+      .hero, .section, .contact-section { padding: 60px 24px; grid-template-columns: 1fr; }
       .section-divider { margin: 0 24px; }
-      .about-grid, .work-grid, .skills-grid, .contact-section {
+      .hero, .about-grid, .work-grid, .skills-grid, .contact-section {
         grid-template-columns: 1fr;
         gap: 40px;
       }
@@ -462,14 +485,19 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-label fade-in">Introduction</div>
-    <h1 class="fade-in">Building systems at the edge of <em>AI and the real world.</em></h1>
-    <p class="hero-bio fade-in">
-      I'm a Computer Science student at Purdue University specializing in AI, ML, and systems. I build things that work — from real-time computer vision on mobile hardware to compilers and cloud pipelines — and I care deeply about the gap between research and production.
-    </p>
-    <div class="hero-actions fade-in">
-      <a href="#work" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    <div class="hero-content">
+      <div class="hero-label fade-in">Introduction</div>
+      <h1 class="fade-in">Building systems at the edge of <em>AI and the real world.</em></h1>
+      <p class="hero-bio fade-in">
+        I'm a Computer Science student at Purdue University specializing in AI, ML, and systems. I build things that work — from real-time computer vision on mobile hardware to compilers and cloud pipelines — and I care deeply about the gap between research and production.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap fade-in">
+      <img src="https://res.cloudinary.com/dptpnadem/image/upload/v1772651792/IMG_6862_hwhsrh.jpg" alt="Shrinand Perumal" />
     </div>
   </section>
 
@@ -601,10 +629,10 @@
   <section class="contact-section" id="contact">
     <h2>Let's build something <em>worth building.</em></h2>
     <div class="contact-links">
-      <a href="mailto:shrinandperumal@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#2e5d465c47404f404a5e4b5c5b434f426e49434f4742004d4143" class="contact-link">
         <div>
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-value">shrinandperumal@gmail.com</div>
+          <div class="contact-link-value"><span class="__cf_email__" data-cfemail="22514a504b4c434c46524750574f434e62454f434b4e0c414d4f">[email&#160;protected]</span></div>
         </div>
         <div class="contact-link-arrow">↗</div>
       </a>
@@ -618,12 +646,4 @@
       <a href="https://github.com/ShriPeru" target="_blank" class="contact-link">
         <div>
           <div class="contact-link-label">GitHub</div>
-          <div class="contact-link-value">github.com/ShriPeru</div>
-        </div>
-        <div class="contact-link-arrow">↗</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
+          <div class="contact-link-value">github.com
