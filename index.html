@@ -165,12 +165,8 @@
       color: var(--text-bright);
       margin-bottom: 32px;
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
     .hero-bio {
-      font-size: 17px;
       color: var(--text-dim);
       max-width: 560px;
       line-height: 1.8;
@@ -216,10 +212,8 @@
       margin: 0 60px;
     }
 
-    /* ABOUT SECTION */
-    .section {
-      padding: 100px 60px;
-    }
+    /* SECTIONS */
+    .section { padding: 100px 60px; }
     .section-header {
       display: flex;
       align-items: baseline;
@@ -239,6 +233,8 @@
       background: var(--border);
       max-width: 80px;
     }
+
+    /* ABOUT */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -262,7 +258,18 @@
     }
     .about-text p + p { margin-top: 20px; }
 
-    /* WORK / PROJECTS */
+    /* TALKS */
+    .talk-label {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 28px;
+      margin-bottom: 8px;
+      font-family: var(--mono);
+    }
+
+    /* WORK */
     .work-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -320,17 +327,17 @@
       letter-spacing: 0.1em;
       color: var(--text-dim);
       display: flex; align-items: center; gap: 8px;
+      text-decoration: none;
       transition: color 0.2s, gap 0.2s;
     }
     .work-card:hover .work-card-arrow { color: var(--gold); gap: 14px; }
 
-    /* SKILLS / BACKGROUND */
+    /* BACKGROUND */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 40px;
     }
-    .skill-block {}
     .skill-block-title {
       font-family: var(--mono);
       font-size: 11px;
@@ -378,11 +385,7 @@
       line-height: 1.15;
     }
     .contact-section h2 em { font-style: italic; color: var(--gold); }
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
     .contact-link {
       display: flex;
       align-items: center;
@@ -405,11 +408,7 @@
       font-size: 16px;
       color: var(--text-bright);
     }
-    .contact-link-arrow {
-      font-family: var(--mono);
-      font-size: 14px;
-      color: var(--gold);
-    }
+    .contact-link-arrow { font-family: var(--mono); font-size: 14px; color: var(--gold); }
 
     /* FOOTER */
     footer {
@@ -426,7 +425,7 @@
       color: var(--text-dim);
     }
 
-    /* FADE IN ANIMATION */
+    /* ANIMATIONS */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -435,19 +434,14 @@
     .fade-in:nth-child(2) { animation-delay: 0.1s; }
     .fade-in:nth-child(3) { animation-delay: 0.2s; }
     .fade-in:nth-child(4) { animation-delay: 0.3s; }
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       .nav-links { display: none; }
       .hero, .section, .contact-section { padding: 60px 24px; grid-template-columns: 1fr; }
       .section-divider { margin: 0 24px; }
-      .hero, .about-grid, .work-grid, .skills-grid, .contact-section {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      .hero, .about-grid, .work-grid, .skills-grid, .contact-section { grid-template-columns: 1fr; gap: 40px; }
       footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
@@ -477,6 +471,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work" class="active">Work</a></li>
+      <li><a href="#talks">Talks</a></li>
       <li><a href="#background">Background</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -539,11 +534,11 @@
           <span class="tag">PyTorch</span>
           <span class="tag">Android / Kotlin</span>
         </div>
-          <div style="display:flex; gap:20px; margin-top:32px;">
-            <a href="https://2026.hci.international/" target="_blank" class="work-card-arrow" style="margin-top:0;">HCI International 2026 →</a>
-            <a href="https://github.com/Purdue-Artificial-Intelligence-in-Music/Evaluator-code" target="_blank" class="work-card-arrow" style="margin-top:0;">GitHub →</a>
-          </div>      
+        <div style="display:flex; gap:20px; margin-top:32px;">
+          <a href="https://2026.hci.international/" target="_blank" class="work-card-arrow" style="margin-top:0;">HCI International 2026 →</a>
+          <a href="https://github.com/Purdue-Artificial-Intelligence-in-Music/Evaluator-code" target="_blank" class="work-card-arrow" style="margin-top:0;">GitHub →</a>
         </div>
+      </div>
 
       <div class="work-card">
         <div class="work-card-num">02</div>
@@ -568,7 +563,7 @@
           <span class="tag">PySpark</span>
           <span class="tag">PostgreSQL</span>
         </div>
-          <a href="https://github.com/ShriPeru/Weather-ETL-Pipeline" target="_blank" class="work-card-arrow">View Project →</a>
+        <a href="https://github.com/ShriPeru/Weather-ETL-Pipeline" target="_blank" class="work-card-arrow">View Project →</a>
       </div>
 
       <div class="work-card">
@@ -589,7 +584,32 @@
 
   <hr class="section-divider"/>
 
-  <!-- BACKGROUND / SKILLS -->
+  <!-- TALKS & DEMOS -->
+  <section class="section" id="talks">
+    <div class="section-header">
+      <span class="section-label">Talks & Demos</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <h2>Presenting research to <em>industry, academia,</em> and peers.</h2>
+      <div class="about-text">
+        <p>I've presented my computer vision research across multiple venues — from undergraduate symposiums to live demos for industry partners and visiting faculty.</p>
+
+        <p class="talk-label" style="margin-top:28px;">Purdue Undergraduate Research Symposium — 2024 & 2025</p>
+        <p>Presented the AI Musician Feedback System at Purdue's Spring Undergraduate Research Symposium in both 2024 and 2025. The 2024 presentation was awarded 1st Place in the College of Science and 1st Place in Digital Humanities.</p>
+
+        <p class="talk-label" style="margin-top:28px;">Qualcomm — VP & Product Managers</p>
+        <p>Volunteered to present the Evaluator Vision project to Qualcomm's Vice President and Product Managers during a lab visit. Delivered a live demo of the Android application showcasing real-time on-device inference using NPU/GPU acceleration on Snapdragon chips.</p>
+
+        <p class="talk-label" style="margin-top:28px;">Visiting Faculty — University of Michigan</p>
+        <p>Demonstrated the real-time cellist posture evaluation system to visiting professors from the University of Michigan, walking through the full pipeline from model training to mobile deployment.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- BACKGROUND -->
   <section class="section" id="background">
     <div class="section-header">
       <span class="section-label">Background</span>
@@ -611,6 +631,7 @@
           <li>1st Place · College of Science · 2024 Research Conference</li>
           <li>1st Place · Digital Humanities · 2024 Research Conference</li>
           <li>Co-author · HCI International 2026</li>
+          <li>Advanced Math: Real Analysis, Probability, Abstract Algebra, Linear Algebra</li>
         </ul>
       </div>
       <div class="skill-block">
@@ -621,7 +642,6 @@
           <li>PySpark, Pandas, NumPy, Keras</li>
           <li>AWS (S3, EC2, RDS, Glue), Firebase, GCP</li>
           <li>Docker, Android Studio, VS Code, Jupyter, Roboflow</li>
-          <li>Advanced Math: Real Analysis, Probability, Abstract Algebra, Linear Algebra</li>
         </ul>
       </div>
     </div>
@@ -633,21 +653,35 @@
   <section class="contact-section" id="contact">
     <h2>Let's build something <em>worth building.</em></h2>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#2e5d465c47404f404a5e4b5c5b434f426e49434f4742004d4143" class="contact-link">
+      <a href="mailto:shrinandperumal@gmail.com" class="contact-link">
         <div>
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-value"><span class="__cf_email__" data-cfemail="22514a504b4c434c46524750574f434e62454f434b4e0c414d4f">[email&#160;protected]</span></div>
+          <div class="contact-link-value">shrinandperumal@gmail.com</div>
         </div>
         <div class="contact-link-arrow">↗</div>
       </a>
       <a href="https://www.linkedin.com/in/shrinand-perumal-6689b7224/" target="_blank" class="contact-link">
         <div>
           <div class="contact-link-label">LinkedIn</div>
-          <div class="contact-link-value">linkedin.com/in/shrinandperumal</div>
+          <div class="contact-link-value">linkedin.com/in/shrinand-perumal</div>
         </div>
         <div class="contact-link-arrow">↗</div>
       </a>
       <a href="https://github.com/ShriPeru" target="_blank" class="contact-link">
         <div>
           <div class="contact-link-label">GitHub</div>
-          <div class="contact-link-value">github.com
+          <div class="contact-link-value">github.com/ShriPeru</div>
+        </div>
+        <div class="contact-link-arrow">↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Shrinand Perumal. All rights reserved.</p>
+    <p>Designed & built with intention.</p>
+  </footer>
+
+</body>
+</html>
