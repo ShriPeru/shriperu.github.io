@@ -334,9 +334,9 @@
 
     /* BACKGROUND */
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
     }
     .skill-block-title {
       font-family: var(--mono);
@@ -359,7 +359,7 @@
       font-size: 12px;
       letter-spacing: 0.05em;
       color: var(--text-dim);
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: flex-start; gap: 10px;
     }
     .skill-list li::before {
       content: '';
@@ -367,9 +367,85 @@
       background: var(--gold-dim);
       border-radius: 50%;
       flex-shrink: 0;
+      margin-top: 5px;
     }
     .skill-list li.bright {
       color: #f5f0e0;
+    }
+    /* Skills tags layout */
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skills-tags .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+    }
+    /* Skills category row */
+    .skills-category {
+      margin-bottom: 20px;
+    }
+    .skills-category-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    /* EXPERIENCE */
+    .exp-role {}
+    .exp-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .exp-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--text-bright);
+    }
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+    .exp-org {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--gold-dim);
+      margin-bottom: 4px;
+    }
+
+    /* COURSEWORK */
+    .coursework-block { width: 100%; }
+    .coursework-inline { display: flex; flex-direction: column; gap: 24px; }
+    .course-inline-group {}
+    .course-group-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .course-inline-list {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.8;
     }
 
     /* CONTACT */
@@ -452,7 +528,7 @@
 <body>
 
   <!-- TICKER -->
-<div class="ticker">
+  <div class="ticker">
     <div class="ticker-inner">
       <span class="highlight">AI & ML SYSTEMS</span> &nbsp;·&nbsp; Purdue University &nbsp;·&nbsp; Co-Lead Computer Vision Researcher &nbsp;·&nbsp; 1st Place · 2024 Undergraduate Research Conference &nbsp;·&nbsp; HCI International 2026 &nbsp;·&nbsp;
       <span class="highlight">AI & ML SYSTEMS</span> &nbsp;·&nbsp; Purdue University &nbsp;·&nbsp; Co-Lead Computer Vision Researcher &nbsp;·&nbsp; 1st Place · 2024 Undergraduate Research Conference &nbsp;·&nbsp; HCI International 2026 &nbsp;·&nbsp;
@@ -486,9 +562,10 @@
     <div class="hero-content">
       <div class="hero-label fade-in">Introduction</div>
       <h1 class="fade-in">Building systems at the edge of <em>AI and the real world.</em></h1>
-<p class="hero-bio fade-in">
-<p class="hero-bio fade-in">
-  Hi, I'm Shrinand! I study Computer Science at Purdue with minors in Math and Psychology, and I care a lot about machine learning and systems. I have experience ranging from real-time computer vision on mobile hardware to compiler design and building cloud pipelines. I'm always looking to learn something new. My work has been recognized with two 1st place awards at Purdue's Undergraduate Research Conferences and a paper accepted to HCI International 2026.</p>      <div class="hero-actions fade-in">
+      <p class="hero-bio fade-in">
+        Hi, I'm Shrinand! I study Computer Science at Purdue with minors in Math and Psychology, and I care a lot about machine learning and systems. I have experience ranging from real-time computer vision on mobile hardware to compiler design and building cloud pipelines. I'm always looking to learn something new. My work has been recognized with two 1st place awards at Purdue's Undergraduate Research Conferences and a paper accepted to HCI International 2026.
+      </p>
+      <div class="hero-actions fade-in">
         <a href="#work" class="btn-primary">View My Work</a>
         <a href="#contact" class="btn-ghost">Let's Talk</a>
       </div>
@@ -500,14 +577,15 @@
 
   <hr class="section-divider"/>
 
-  <hr class="section-divider"/>
-
   <!-- BACKGROUND -->
   <section class="section" id="background">
     <div class="section-header">
       <span class="section-label">Background</span>
       <div class="section-line"></div>
     </div>
+    <div class="skills-grid">
+
+      <!-- EDUCATION -->
       <div class="skill-block">
         <div class="skill-block-title">Education</div>
         <ul class="skill-list">
@@ -516,30 +594,100 @@
           <li>1st Place · College of Science · 2024 Research Conference</li>
           <li>1st Place · Digital Humanities · 2024 Research Conference</li>
           <li>Co-author · HCI International 2026</li>
-          <li>CS courses: Data Structures and Algorithms, Cloud Computing Fundamentals, Operating Systems, Analysis of Algorithms, Intro to Robotics, System Programming, Computer Architecture </li>
-          <li>Advanced Math: Real Analysis, Probability, Abstract Algebra, Proof Based - Linear Algebra</li>
         </ul>
       </div>
-    <div class="skills-grid">
+
+      <!-- EXPERIENCE -->
       <div class="skill-block">
         <div class="skill-block-title">Experience</div>
-        <ul class="skill-list">
-          <li>AI for Musicians, Purdue — AI & ML Research Co-Lead (2024–Present)</li>
-          <li>Superfluid Dx · The Data Mine — Data Science Researcher (2024)</li>
-        </ul>
+
+        <div class="exp-role">
+          <div class="exp-header">
+            <span class="exp-title">AI & ML Research Co-Lead</span>
+            <span class="exp-date">Jan 2024 – Present</span>
+          </div>
+          <div class="exp-org">Artificial Intelligence for Musicians, Purdue University</div>
+          <ul class="skill-list" style="margin-top: 12px;">
+            <li>Lead 4–5 person AI team developing a real-time computer vision system for automated musician feedback; awarded 1st place at 2024 Undergraduate Research Conference in College of Science and Digital Humanities.</li>
+            <li>Designed and trained custom YOLO model with oriented bounding boxes for bow-string detection; evaluated multiple CV approaches using Gilbreth GPU cluster.</li>
+            <li>Developed geometric classification algorithm using trigonometric methods to detect improper bow angles, replacing deep learning approach while maintaining accuracy and reducing computational cost.</li>
+            <li>Optimized mobile deployment by converting PyTorch to TensorFlow via Qualcomm AI Hub and porting Python to Kotlin, implementing NPU/GPU acceleration on Snapdragon chips for 3x performance improvement.</li>
+            <li>Co-authored paper accepted for HCI International 2026; delivered live demos to Qualcomm partners showcasing the Android application and real-time model performance.</li>
+          </ul>
+        </div>
+
+        <div class="exp-role" style="margin-top: 36px;">
+          <div class="exp-header">
+            <span class="exp-title">Data Science Researcher</span>
+            <span class="exp-date">Jan 2024 – May 2024</span>
+          </div>
+          <div class="exp-org">Superfluid Dx · The Data Mine, Purdue University</div>
+          <ul class="skill-list" style="margin-top: 12px;">
+            <li>Developed and evaluated ML classifiers for Alzheimer's disease diagnosis from cell-free mRNA gene expression data, achieving a Youden's index of 0.81 with 100% specificity.</li>
+            <li>Led uncertainty analysis investigating feature interactions and multicollinear gene effects; performed statistical distribution fitting using KS tests and simulated gene expression datasets with Gamma distributions.</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- SKILLS & TOOLS -->
       <div class="skill-block">
         <div class="skill-block-title">Skills & Tools</div>
-        <ul class="skill-list">
-          <li>Python, Java, C/C++, Kotlin, SQL, Shell</li>
-          <li>PyTorch, TensorFlow, Scikit-learn, OpenCV</li>
-          <li>PySpark, Pandas, NumPy, Keras</li>
-          <li>AWS (S3, EC2, RDS, Glue), Firebase, GCP</li>
-          <li>Docker, Android Studio, VS Code, Jupyter, Roboflow</li>
-        </ul>
+        <div class="skills-category">
+          <div class="skills-category-label">Languages</div>
+          <div class="skills-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">C / C++</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Shell</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <div class="skills-category-label">ML / Data</div>
+          <div class="skills-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Keras</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <div class="skills-category-label">Infrastructure & Tools</div>
+          <div class="skills-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Android Studio</span>
+            <span class="tag">Roboflow</span>
+            <span class="tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COURSEWORK — full width row -->
+    <div class="coursework-block">
+      <div class="skill-block-title" style="margin-top: 40px;">Coursework</div>
+      <div class="coursework-inline">
+        <div class="course-inline-group">
+          <div class="course-group-label">Computer Science</div>
+          <p class="course-inline-list">Data Structures and Algorithms, Analysis of Algorithms, Operating Systems, System Programming, Computer Architecture, Cloud Computing Fundamentals, Intro to Robotics</p>
+        </div>
+        <div class="course-inline-group">
+          <div class="course-group-label">Mathematics</div>
+          <p class="course-inline-list">Real Analysis, Probability, Abstract Algebra, Proof-Based Linear Algebra</p>
+        </div>
       </div>
     </div>
   </section>
+
   <hr class="section-divider"/>
 
   <!-- WORK -->
@@ -552,7 +700,7 @@
 
       <div class="work-card">
         <div class="work-card-num">01</div>
-        <h3>AI Musician Feedback System</h3>
+        <h3>Evaluator</h3>
         <p>Led a 4–5 person team building a real-time computer vision system that gives automated feedback to musicians. Trained a custom YOLO model with oriented bounding boxes for bow-string detection, then developed a trigonometric classification algorithm to detect improper bow angles — replacing a deep learning approach while maintaining accuracy.</p>
         <div class="work-card-tags">
           <span class="tag">Computer Vision</span>
@@ -576,7 +724,7 @@
           <span class="tag">Statistics</span>
           <span class="tag">Bioinformatics</span>
         </div>
-          <a href="https://www.superfluiddx.com/" target="_blank" class="work-card-arrow">Superfluid Dx · The Data Mine →</a>
+        <a href="https://www.superfluiddx.com/" target="_blank" class="work-card-arrow">Superfluid Dx · The Data Mine →</a>
       </div>
 
       <div class="work-card">
@@ -618,6 +766,7 @@
         </div>
         <a href="https://github.com/ShriPeru/GestureSynth" target="_blank" class="work-card-arrow">View Project →</a>
       </div>
+
     </div>
   </section>
 
@@ -652,10 +801,10 @@
   <section class="contact-section" id="contact">
     <h2>Let's build something <em>worth building.</em></h2>
     <div class="contact-links">
-      <a href="mailto:shriperu05@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#c9baa1bba0b9acbbbcf9fc89aea4a8a0a5e7aaa6a4" class="contact-link">
         <div>
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-value">shriperu05@gmail.com</div>
+          <div class="contact-link-value"><span class="__cf_email__" data-cfemail="9eedf6ecf7eefbecebaeabdef9f3fff7f2b0fdf1f3">[email&#160;protected]</span></div>
         </div>
         <div class="contact-link-arrow">↗</div>
       </a>
@@ -677,10 +826,4 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Shrinand Perumal. All rights reserved.</p>
-    <p>Designed & built with intention.</p>
-  </footer>
-
-</body>
-</html>
+  <fo
