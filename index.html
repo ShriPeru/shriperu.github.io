@@ -332,12 +332,21 @@
     }
     .work-card:hover .work-card-arrow { color: var(--gold); gap: 14px; }
 
-    /* BACKGROUND */
+    /* BACKGROUND — skills grid */
     .skills-grid {
       display: flex;
       flex-direction: column;
       gap: 48px;
     }
+
+    /* NEW: side-by-side row for Education + Skills */
+    .skills-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
     .skill-block-title {
       font-family: var(--mono);
       font-size: 11px;
@@ -369,9 +378,8 @@
       flex-shrink: 0;
       margin-top: 5px;
     }
-    .skill-list li.bright {
-      color: #f5f0e0;
-    }
+    .skill-list li.bright { color: #f5f0e0; }
+
     /* Skills tags layout */
     .skills-tags {
       display: flex;
@@ -387,7 +395,6 @@
       border: 1px solid var(--border);
       padding: 6px 14px;
     }
-    /* Skills category row */
     .skills-category {
       margin-bottom: 20px;
     }
@@ -520,7 +527,8 @@
       .nav-links { display: none; }
       .hero, .section, .contact-section { padding: 60px 24px; grid-template-columns: 1fr; }
       .section-divider { margin: 0 24px; }
-      .hero, .about-grid, .work-grid, .skills-grid, .contact-section { grid-template-columns: 1fr; gap: 40px; }
+      .hero, .about-grid, .work-grid, .contact-section { grid-template-columns: 1fr; gap: 40px; }
+      .skills-row { grid-template-columns: 1fr; gap: 40px; }
       footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
@@ -583,21 +591,69 @@
       <span class="section-label">Background</span>
       <div class="section-line"></div>
     </div>
+
     <div class="skills-grid">
 
-      <!-- EDUCATION -->
-      <div class="skill-block">
-        <div class="skill-block-title">Education</div>
-        <ul class="skill-list">
-          <li class="bright"><strong>Purdue University — B.S. Computer Science (2023–2027)</strong></li>
-          <li>Minors in Mathematics & Psychology</li>
-          <li>1st Place · College of Science · 2024 Research Conference</li>
-          <li>1st Place · Digital Humanities · 2024 Research Conference</li>
-          <li>Co-author · HCI International 2026</li>
-        </ul>
-      </div>
+      <!-- ROW 1: Education + Skills side by side -->
+      <div class="skills-row">
 
-      <!-- EXPERIENCE -->
+        <!-- EDUCATION -->
+        <div class="skill-block">
+          <div class="skill-block-title">Education</div>
+          <ul class="skill-list">
+            <li class="bright"><strong>Purdue University — B.S. Computer Science (2023–2027)</strong></li>
+            <li>Minors in Mathematics & Psychology</li>
+            <li>1st Place · College of Science · 2024 Research Conference</li>
+            <li>1st Place · Digital Humanities · 2024 Research Conference</li>
+            <li>Co-author · HCI International 2026</li>
+          </ul>
+        </div>
+
+        <!-- SKILLS & TOOLS -->
+        <div class="skill-block">
+          <div class="skill-block-title">Skills & Tools</div>
+          <div class="skills-category">
+            <div class="skills-category-label">Languages</div>
+            <div class="skills-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+              <span class="tag">C / C++</span>
+              <span class="tag">Kotlin</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Shell</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-category-label">ML / Data</div>
+            <div class="skills-tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">PySpark</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Keras</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <div class="skills-category-label">Infrastructure & Tools</div>
+            <div class="skills-tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Android Studio</span>
+              <span class="tag">Roboflow</span>
+              <span class="tag">Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- END ROW 1 -->
+
+      <!-- EXPERIENCE — full width -->
       <div class="skill-block">
         <div class="skill-block-title">Experience</div>
 
@@ -626,47 +682,6 @@
             <li>Developed and evaluated ML classifiers for Alzheimer's disease diagnosis from cell-free mRNA gene expression data, achieving a Youden's index of 0.81 with 100% specificity.</li>
             <li>Led uncertainty analysis investigating feature interactions and multicollinear gene effects; performed statistical distribution fitting using KS tests and simulated gene expression datasets with Gamma distributions.</li>
           </ul>
-        </div>
-      </div>
-
-      <!-- SKILLS & TOOLS -->
-      <div class="skill-block">
-        <div class="skill-block-title">Skills & Tools</div>
-        <div class="skills-category">
-          <div class="skills-category-label">Languages</div>
-          <div class="skills-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Java</span>
-            <span class="tag">C / C++</span>
-            <span class="tag">Kotlin</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Shell</span>
-          </div>
-        </div>
-        <div class="skills-category">
-          <div class="skills-category-label">ML / Data</div>
-          <div class="skills-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">PySpark</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">Keras</span>
-          </div>
-        </div>
-        <div class="skills-category">
-          <div class="skills-category-label">Infrastructure & Tools</div>
-          <div class="skills-tags">
-            <span class="tag">AWS</span>
-            <span class="tag">Firebase</span>
-            <span class="tag">GCP</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Android Studio</span>
-            <span class="tag">Roboflow</span>
-            <span class="tag">Jupyter</span>
-          </div>
         </div>
       </div>
 
@@ -801,10 +816,10 @@
   <section class="contact-section" id="contact">
     <h2>Let's build something <em>worth building.</em></h2>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#c9baa1bba0b9acbbbcf9fc89aea4a8a0a5e7aaa6a4" class="contact-link">
+      <a href="mailto:shrinperu@gmail.com" class="contact-link">
         <div>
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-value"><span class="__cf_email__" data-cfemail="9eedf6ecf7eefbecebaeabdef9f3fff7f2b0fdf1f3">[email&#160;protected]</span></div>
+          <div class="contact-link-value">shrinperu@gmail.com</div>
         </div>
         <div class="contact-link-arrow">↗</div>
       </a>
@@ -826,4 +841,10 @@
   </section>
 
   <!-- FOOTER -->
-  <fo
+  <footer>
+    <p>© 2025 Shrinand Perumal</p>
+    <p>Built with intention.</p>
+  </footer>
+
+</body>
+</html>
