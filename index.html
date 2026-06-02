@@ -269,17 +269,37 @@
       font-family: var(--mono);
     }
 
-    /* TALKS SECTION — new 3-col layout */
+    /* TALKS SECTION — 2-col layout: left=headline+photo, right=entries */
     .talks-layout {
       display: grid;
-      grid-template-columns: 380px 1fr 1fr;
-      gap: 60px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
 
-    .talks-photo-col {
-      position: relative;
+    .talks-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
+
+    .talks-left-col h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-bright);
+    }
+    .talks-left-col h2 em { font-style: italic; color: var(--gold); }
+    .talks-left-col > p {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.9;
+      margin-top: -8px;
+    }
+
     .talks-photo-wrap {
       position: relative;
     }
@@ -294,7 +314,7 @@
     }
     .talks-photo-wrap img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       object-position: center top;
       display: block;
@@ -308,23 +328,6 @@
       text-transform: uppercase;
       color: var(--text-dim);
       line-height: 1.6;
-    }
-
-    .talks-headline-col h2 {
-      font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--text-bright);
-    }
-    .talks-headline-col h2 em { font-style: italic; color: var(--gold); }
-    .talks-headline-col > p {
-      margin-top: 24px;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.03em;
-      color: var(--text-dim);
-      line-height: 1.9;
     }
 
     .talks-entries-col {
@@ -597,6 +600,7 @@
       .hero, .about-grid, .work-grid, .contact-section { grid-template-columns: 1fr; gap: 40px; }
       .skills-row { grid-template-columns: 1fr; gap: 40px; }
       .talks-layout { grid-template-columns: 1fr; gap: 40px; }
+      .talks-left-col { gap: 20px; }
       footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
@@ -864,26 +868,22 @@
 
     <div class="talks-layout">
 
-      <!-- LEFT: Photo -->
-      <div class="talks-photo-col">
+      <!-- LEFT: Headline + intro + photo -->
+      <div class="talks-left-col">
+        <h2>Presenting research to <em>industry, academia,</em> and peers.</h2>
+        <p>I've presented my computer vision research across multiple venues — from undergraduate symposiums to live demos for industry partners and visiting faculty.</p>
         <div class="talks-photo-wrap">
           <img
             src="https://res.cloudinary.com/dptpnadem/image/upload/v1780380550/AIM_presentation_porfolio_df8wgc.jpg"
             alt="Presenting at Purdue Undergraduate Research Symposium"
           />
         </div>
-        <p class="talks-photo-caption">Purdue Undergraduate Research Symposium · Spring 2024</p>
-      </div>
-
-      <!-- MIDDLE: Headline + intro -->
-      <div class="talks-headline-col">
-        <h2>Presenting research to <em>industry, academia,</em> and peers.</h2>
-        <p>I've presented my computer vision research across multiple venues — from undergraduate symposiums to live demos for industry partners and visiting faculty.</p>
+        <p class="talks-photo-caption">Purdue Undergraduate Research Symposium</p>
       </div>
 
       <!-- RIGHT: Talk entries -->
       <div class="talks-entries-col">
-        <p class="talk-label">Purdue Undergraduate Research Symposium — 2024 & 2025</p>
+        <p class="talk-label">Purdue Undergraduate Research Symposium — 2024, 2025, and 2026</p>
         <p>Presented the AI Musician Feedback System at Purdue's Spring Undergraduate Research Symposium in both 2024 and 2025. The 2024 presentation was awarded 1st Place in the College of Science and 1st Place in Digital Humanities.</p>
 
         <p class="talk-label" style="margin-top:28px;">Qualcomm — VP & Product Managers</p>
