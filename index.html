@@ -269,6 +269,73 @@
       font-family: var(--mono);
     }
 
+    /* TALKS SECTION — new 3-col layout */
+    .talks-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .talks-photo-col {
+      position: relative;
+    }
+    .talks-photo-wrap {
+      position: relative;
+    }
+    .talks-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border: 1px solid var(--gold-dim);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .talks-photo-wrap img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .talks-photo-caption {
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .talks-headline-col h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-bright);
+    }
+    .talks-headline-col h2 em { font-style: italic; color: var(--gold); }
+    .talks-headline-col > p {
+      margin-top: 24px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.9;
+    }
+
+    .talks-entries-col {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      line-height: 1.9;
+    }
+    .talks-entries-col p + p { margin-top: 20px; }
+
     /* WORK */
     .work-grid {
       display: grid;
@@ -529,6 +596,7 @@
       .section-divider { margin: 0 24px; }
       .hero, .about-grid, .work-grid, .contact-section { grid-template-columns: 1fr; gap: 40px; }
       .skills-row { grid-template-columns: 1fr; gap: 40px; }
+      .talks-layout { grid-template-columns: 1fr; gap: 40px; }
       footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
@@ -724,7 +792,7 @@
           <span class="tag">Android / Kotlin</span>
         </div>
         <div style="display:flex; gap:20px; margin-top:32px;">
-          <a href="https://2026.hci.international/" target="_blank" class="work-card-arrow" style="margin-top:0;">HCI International 2026 →</a>
+          <a href="https://arxiv.org/abs/2604.17530" target="_blank" class="work-card-arrow" style="margin-top:0;">HCII 2026 Paper →</a>
           <a href="https://github.com/Purdue-Artificial-Intelligence-in-Music/Evaluator-code" target="_blank" class="work-card-arrow" style="margin-top:0;">GitHub →</a>
         </div>
       </div>
@@ -793,12 +861,29 @@
       <span class="section-label">Talks & Demos</span>
       <div class="section-line"></div>
     </div>
-    <div class="about-grid">
-      <h2>Presenting research to <em>industry, academia,</em> and peers.</h2>
-      <div class="about-text">
-        <p>I've presented my computer vision research across multiple venues — from undergraduate symposiums to live demos for industry partners and visiting faculty.</p>
 
-        <p class="talk-label" style="margin-top:28px;">Purdue Undergraduate Research Symposium — 2024 & 2025</p>
+    <div class="talks-layout">
+
+      <!-- LEFT: Photo -->
+      <div class="talks-photo-col">
+        <div class="talks-photo-wrap">
+          <img
+            src="https://res.cloudinary.com/dptpnadem/image/upload/v1780380550/AIM_presentation_porfolio_df8wgc.jpg"
+            alt="Presenting at Purdue Undergraduate Research Symposium"
+          />
+        </div>
+        <p class="talks-photo-caption">Purdue Undergraduate Research Symposium · Spring 2024</p>
+      </div>
+
+      <!-- MIDDLE: Headline + intro -->
+      <div class="talks-headline-col">
+        <h2>Presenting research to <em>industry, academia,</em> and peers.</h2>
+        <p>I've presented my computer vision research across multiple venues — from undergraduate symposiums to live demos for industry partners and visiting faculty.</p>
+      </div>
+
+      <!-- RIGHT: Talk entries -->
+      <div class="talks-entries-col">
+        <p class="talk-label">Purdue Undergraduate Research Symposium — 2024 & 2025</p>
         <p>Presented the AI Musician Feedback System at Purdue's Spring Undergraduate Research Symposium in both 2024 and 2025. The 2024 presentation was awarded 1st Place in the College of Science and 1st Place in Digital Humanities.</p>
 
         <p class="talk-label" style="margin-top:28px;">Qualcomm — VP & Product Managers</p>
@@ -807,6 +892,7 @@
         <p class="talk-label" style="margin-top:28px;">Visiting Faculty — University of Michigan</p>
         <p>Demonstrated the real-time cellist posture evaluation system to visiting professors from the University of Michigan, walking through the full pipeline from model training to mobile deployment.</p>
       </div>
+
     </div>
   </section>
 
